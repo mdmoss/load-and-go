@@ -9,7 +9,7 @@ def row_to_dict(row):
     date_tag = row.find(id = re.compile(r'transactionView\.output\.transactionDate\d+'))
     date = " ".join(date_tag.get_text().split()[0:3])
 
-    ref_tag = row.find(id = re.compile(r'transactionView\.output\.reference\d+')).get_text()
+    ref_tag = row.find(id = re.compile(r'transactionView\.output\.reference\d+'))
     ref = " ".join(ref_tag.get_text().split())
 
     desc_tag = row.find(id = re.compile(r'transactionView\.output\.transactionDescription\d+'))
@@ -23,7 +23,7 @@ def row_to_dict(row):
         amount = '-' + money_out.get_text().strip()
     
     balance_tag = row.find(id = re.compile(r'transactionView\.output\.total\d+'))
-    balance = " ".join(balance_str.get_text().split())
+    balance = " ".join(balance_tag.get_text().split())
 
     return {'date':date, 'ref':ref, 'desc':desc, 'amount':amount, 'balance':balance}
 
